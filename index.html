@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agent Sandbox - 强大的AI代理开发和测试平台">
+    <title>Agent Sandbox - AI代理沙箱平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="url(#gradient)"/>
+                        <path d="M16 8L20 14H12L16 8Z" fill="white"/>
+                        <path d="M10 18L16 24L22 18H10Z" fill="white"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#6366f1"/>
+                                <stop offset="1" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Agent Sandbox</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">功能</a></li>
+                    <li><a href="#how-it-works">工作原理</a></li>
+                    <li><a href="#examples">示例</a></li>
+                    <li><a href="#docs">文档</a></li>
+                    <li><a href="#contact" class="btn-primary">开始使用</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🚀 新一代AI代理平台</span>
+                </div>
+                <h1 class="hero-title">
+                    构建、测试和部署
+                    <span class="gradient-text">AI代理</span>
+                    的完美环境
+                </h1>
+                <p class="hero-description">
+                    Agent Sandbox 提供了一个安全、隔离的环境，让您可以轻松开发、测试和迭代AI代理应用。
+                    无需担心环境配置，专注于您的创意。
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">立即开始</a>
+                    <a href="#how-it-works" class="btn btn-secondary">了解更多</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">活跃用户</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">代理部署</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">运行时间</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="code-title">agent_sandbox.py</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code><span class="keyword">from</span> agent_sandbox <span class="keyword">import</span> Agent, Sandbox
+
+<span class="comment"># 创建代理</span>
+agent = Agent(
+    name=<span class="string">"my_agent"</span>,
+    capabilities=[<span class="string">"web_search"</span>, <span class="string">"code_execution"</span>]
+)
+
+<span class="comment"># 在沙箱中运行</span>
+sandbox = Sandbox()
+result = sandbox.run(agent, task=<span class="string">"分析数据并生成报告"</span>)
+
+<span class="function">print</span>(result)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">强大功能</h2>
+                <p class="section-description">为AI代理开发提供完整的工具链</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>安全隔离</h3>
+                    <p>每个代理运行在完全隔离的沙箱环境中，确保安全性和稳定性。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>快速部署</h3>
+                    <p>一键部署，无需复杂配置。支持多种编程语言和框架。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>实时监控</h3>
+                    <p>实时查看代理运行状态、性能指标和日志输出。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>版本控制</h3>
+                    <p>内置版本管理系统，轻松回滚和迭代您的代理。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>API集成</h3>
+                    <p>丰富的API接口，轻松集成到您的应用中。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>协作开发</h3>
+                    <p>支持团队协作，共享和复用代理组件。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">工作原理</h2>
+                <p class="section-description">简单三步，开始您的AI代理之旅</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>创建代理</h3>
+                        <p>使用我们的SDK或Web界面快速创建您的AI代理，定义其能力和行为。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>测试运行</h3>
+                        <p>在安全的沙箱环境中测试您的代理，实时查看运行结果和性能。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>部署上线</h3>
+                        <p>一键部署到生产环境，享受高可用性和自动扩展能力。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="examples">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">使用示例</h2>
+                <p class="section-description">看看其他开发者如何使用Agent Sandbox</p>
+            </div>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-header">
+                        <h3>数据分析代理</h3>
+                        <span class="example-tag">Python</span>
+                    </div>
+                    <p>自动分析数据并生成可视化报告</p>
+                    <div class="example-code">
+                        <code>agent.analyze(data).generate_report()</code>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header">
+                        <h3>Web搜索代理</h3>
+                        <span class="example-tag">JavaScript</span>
+                    </div>
+                    <p>智能搜索并整理网络信息</p>
+                    <div class="example-code">
+                        <code>agent.search(query).summarize()</code>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-header">
+                        <h3>代码审查代理</h3>
+                        <span class="example-tag">Multi</span>
+                    </div>
+                    <p>自动审查代码质量和安全性</p>
+                    <div class="example-code">
+                        <code>agent.review(code).suggest()</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>准备开始了吗？</h2>
+                <p>立即注册，免费体验Agent Sandbox的强大功能</p>
+                <form class="cta-form">
+                    <input type="email" placeholder="输入您的邮箱地址" required>
+                    <button type="submit" class="btn btn-primary">免费开始</button>
+                </form>
+                <p class="cta-note">无需信用卡，立即开始使用</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="32" height="32" rx="8" fill="url(#gradient2)"/>
+                            <path d="M16 8L20 14H12L16 8Z" fill="white"/>
+                            <path d="M10 18L16 24L22 18H10Z" fill="white"/>
+                            <defs>
+                                <linearGradient id="gradient2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#6366f1"/>
+                                    <stop offset="1" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Agent Sandbox</span>
+                    </div>
+                    <p>构建下一代AI代理应用的平台</p>
+                </div>
+                <div class="footer-section">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#features">功能</a></li>
+                        <li><a href="#examples">示例</a></li>
+                        <li><a href="#docs">文档</a></li>
+                        <li><a href="#">定价</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="#">博客</a></li>
+                        <li><a href="#">教程</a></li>
+                        <li><a href="#">API文档</a></li>
+                        <li><a href="#">社区</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>公司</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Agent Sandbox. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
