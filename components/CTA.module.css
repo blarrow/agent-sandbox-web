@@ -1,0 +1,59 @@
+.cta {
+    background: var(--gradient);
+    color: white;
+    text-align: center;
+}
+
+.ctaContent h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.ctaContent > p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.ctaForm {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+}
+
+.ctaForm input {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background: white;
+    color: var(--text-primary);
+}
+
+.ctaForm input::placeholder {
+    color: var(--text-secondary);
+}
+
+.ctaForm input:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+.ctaNote {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .ctaForm {
+        flex-direction: column;
+    }
+
+    .ctaForm input,
+    .ctaForm button {
+        width: 100%;
+    }
+}
