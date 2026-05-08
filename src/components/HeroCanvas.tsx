@@ -1,17 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 const HeroCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
+  const [useFallback, setUseFallback] = useState(false);
   
   useEffect(() => {
+    const checkWebGLSupport = (): boolean => {
+      try {
+        const canvas = document.createElement('canvas');
+        return !!(
+          window.WebGLRenderingContext && 
+          (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+        );
+      } catch (e) {
+        return false;
+      }
+    };
+
+    if (!checkWebGLSupport()) {
+      setUseFallback(true);
+      return;
+    }
+
     const currentCanvas = canvasRef.current;
     if (!currentCanvas) return;
     
-    // 创建场景
     const scene = new THREE.Scene();
     
-    // 创建相机
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
@@ -20,7 +36,6 @@ const HeroCanvas: React.FC = () => {
     );
     camera.position.z = 5;
     
-    // 创建渲染器
     const renderer = new THREE.WebGLRenderer({ 
       alpha: true, 
       antialias: true 
@@ -28,13 +43,11 @@ const HeroCanvas: React.FC = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     
-    // 清除可能存在的子元素
     currentCanvas.innerHTML = '';
     currentCanvas.appendChild(renderer.domElement);
     
-    // 粒子配置 - 减少粒子数量以提高性能
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 800;
+    const particlesCount = 600;
     
     const posArray = new Float32Array(particlesCount * 3);
     
@@ -44,7 +57,6 @@ const HeroCanvas: React.FC = () => {
     
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     
-    // 粒子材质
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.02,
       color: 0xffffff,
@@ -53,11 +65,9 @@ const HeroCanvas: React.FC = () => {
       sizeAttenuation: true
     });
     
-    // 创建粒子系统
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
     
-    // 动画函数
     let animationId: number;
     const animate = () => {
       animationId = requestAnimationFrame(animate);
@@ -70,7 +80,6 @@ const HeroCanvas: React.FC = () => {
     
     animate();
     
-    // 响应式调整
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -79,7 +88,6 @@ const HeroCanvas: React.FC = () => {
     
     window.addEventListener('resize', handleResize);
     
-    // 清理函数
     return () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationId);
@@ -91,6 +99,34 @@ const HeroCanvas: React.FC = () => {
       }
     };
   }, []);
+
+  if (useFallback) {
+    return (
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"></div>
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full opacity-30"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 2}s`,
+              }}
+            />
+          ))}
+        </div>
+        <style>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+            50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+          }
+        `}</style>
+      </div>
+    );
+  }
   
   return <div ref={canvasRef} className="absolute inset-0 z-0"></div>;
 };
